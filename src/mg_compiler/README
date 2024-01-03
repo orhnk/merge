@@ -1,8 +1,0 @@
-= MgMIR Parser =
-
-This module consists of a two main components:
-
-	- Lexer
-	- Parser
-
-Note that there is no tokenizer which is unneeded (imo) for such a simple MIR
