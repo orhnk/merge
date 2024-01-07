@@ -1,5 +1,6 @@
 {
-	"pacman": {
+	"name": "pacman",
+	"mir_pm_pairs": {
 		"install <package_list>": "-S <package_list>",
 		"update <package_list>": "-U <package_list>",
 		"search <package_list>": "-Q <package_list>",
