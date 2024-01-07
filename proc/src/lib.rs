@@ -1,7 +1,6 @@
 use proc_macro::TokenStream;
-use quote::{IdentFragment, quote};
+use quote::quote;
 use syn::{parse_macro_input, Ident};
-
 #[proc_macro]
 pub fn generate_single_package_manager_json_struct(input: TokenStream) -> TokenStream {
     // Parse the input as an identifier
@@ -38,7 +37,6 @@ struct PacmanJson {
 
 */
 
-
 #[proc_macro]
 pub fn generate_single_package_manager_function(input: TokenStream) -> TokenStream {
     // Parse the input as an identifier
@@ -68,7 +66,6 @@ pub fn generate_single_package_manager_function(input: TokenStream) -> TokenStre
     // Convert the generated code to a TokenStream and return it
     TokenStream::from(expanded)
 }
-
 
 /*
 
