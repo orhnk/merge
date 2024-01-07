@@ -1,0 +1,11 @@
+{
+	"name": "apk",
+	"mir_pm_pairs": {
+		"install <package_list>": "add <package_list>",
+		"update <package_list>": "upgrade <package_list>",
+		"search <package_list>": "search <package_list>",
+		"remove <package_list>": "del <package_list>",
+		"--upgrade-packages": "update",
+		"install <package_list> --upgrade-packages": "<!>"
+	}
+}
