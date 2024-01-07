@@ -1,10 +1,11 @@
 {
-	"apt-get": {
+	"name": "apt",
+	"mir_pm_pairs": {
 		"install <package_list>": "install <package_list>",
-		"update <package_list>": "-U <package_list>",
-		"search <package_list>": "-Q <package_list>",
-		"remove <package_list>": "-R <package_list>",
-		"--upgrade-packages": "-Syu",
-		"install <package_list> --upgrade-packages": "-Syu <package_list>"
+		"update <package_list>": "upgrade <package_list>",
+		"search <package_list>": "search <package_list>",
+		"remove <package_list>": "remove <package_list>",
+		"--upgrade-packages": "update",
+		"install <package_list> --upgrade-packages": "<!>"
 	}
 }
