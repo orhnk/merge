@@ -33,5 +33,24 @@ macro_rules! package_manager_function {
     }
 }
 
-pub use package_manager_json;
+#[macro_export]
+macro_rules! package_manager_enum {
+    ($a:ident) => {
+        $a,
+    };
+
+    ($($a:ident),*) => {
+        enum MergePackageManager {
+        $(
+            $a,
+        )*
+        }
+    };
+
+    {} => {
+        ::std::compile_error!("macro `package_manager` takes at least an arguments");
+    }
+}
+
 pub use package_manager_function;
+pub use package_manager_json;
