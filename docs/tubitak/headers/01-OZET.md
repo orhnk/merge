@@ -8,56 +8,37 @@
 > verilir. İdeal olan başlarken taslak bir özet oluşturup, çalışma bittiğinde
 > proje raporunun içeriğine uygun bir şekilde özeti güncellemektir.
 
-Son yıllarda dijital dünya adına geliştirilen teknolojiler sayesinde program
-geliştirmek için başvurulan yöntemlerin verimi zamanla artmıştır.
-
-Örneğin 70'lerde bilgisayar yazılımcıları, programlarını delikli kartlar üzerine
+Son yıllarda dijital dünyada elde edilen yeni teknolojiler sayesinde program
+geliştirmek için başvurulan yöntemlerin verimliliği artmıştır. Örneğin 70'li yılların yazılımcıları programlarını delikli kartlar üzerine
 yazarken bu işlem daha sonra assmebly gibi düşük seviye makine dillerine,
-ardından C gibi düşük seviye programlama dillerine ardından da günümüz LLVM gibi
-modern altyapılar kullanan Zig, Rust gibi programlama dillerine dönüşmüştür.
+ardından C gibi düşük seviye programlama dillerine, günümüzde de LLVM gibi
+modern altyapılar kullanan Zig ve Rust benzeri programlama dillerine dönüşmüştür.
 
-Bu gelişmelerde göze çarpan iyileştirmelerden birisi de standardalizasyon
-alanındadır.
+Yaşanan değişikliğin büyük bir kısmı da standardizasyon alanında gerçekleşmiştir. Mesela C++'ta standart bir paket yöneticisi bulunmaması
+nedeniyle bağımlılık yönetimi aşamsında belirsizler yaşanırken Rust bunu standardize etmiştir.
 
-Mesela C/C++ gibi programlama dillerinin standard bir paket yöneticileri yoktur.
-Şimdiye kadar vcpkg, canon gibi paket yöneticisi girişimleri olsa da genel bir
-standard yakalanamamıştır. Daha sonraları çıkan Rust gibi programlama dilleri bu
-problemi çözmek adına Cargo benzeri standart paket yöneticileri kullanmış ve
-kullancıların karşılaşabileceği belirsizlikleri ortadan kaldırmıştır.
+Benzer sıkıntıları işletim sistemlerinin paket yöneticileri için de söyleyebiliriz.
+Örnek olarak Arch Linux `pacman -S <paket>` komutu, Scoop paket yöneticisinde
+`scoop install <paket>` şeklindedir. Sanal makine gibi çok sayıda işletim sistemi kullanımı gerektiren ortamlarda yazılımcılar yüzlerce komutla çalışmaktadır
+Bu durum yaşanan kafa karışıklığının boyutunu ortaya koymaktadır.
 
-Aynı standardalizasyon sıkıntıları işletim sistemi paket yöneticilerinde de
-görülmektedir. Arch Linux İşletim Sistemi'nin `pacman -S <paket>` komutu bir
-paket indirirken Windows temelli Scoop paket yöneticisinde aynı paket
-`scoop install <paket>` şeklindedir. Bu durum, bazı programların dökümanlarında
-yer almayan komutları kullanmanırken sistem uyuşmazlıklarına, sanal makineler
-arası geçiş yaparken veya sistem değiştirirken kafa karışıklığına sebep
-olmaktadır.
+Benzeri uyumsuzluklar, açık kaynaklı programları kurarken,
+sanal makineler arası geçiş yaparken veya işletim sistemi değiştirirken
+sıklıkla yaşanmaktadır.
 
-Bu probleme çözüm olarak geliştirdiğimiz `merge` paket yöneticisi emülatörü,
-işletim sisteminizde istediğiniz paket yöneticisinin komutlarını kullanmanıza
-olanak sağlar. `merge` sayesinde Windows'ta `pacman -S <paket>`,
-`scoop install <paket>`, `emerge --install <paket>` gibi pek çok paket
-yöneticisinin komutlarını işletim sisteminizde çalıştırabilirsiniz.
+Bu probleme çözüm olarak geliştirdiğimiz `merge` emülatörü,
+herhangi bir sisteme bağlı kalmadan tanımlı bütün komutların kullanılabilmesine olanak sağlar.
+Az önce verilen örnekten yola çıkacak olursak
+Arch linux işletim sisteminde `pacman -S <paket>` komutunun yanında `scoop install <paket>` komutunu da kullanabilirsiniz.
 
-Böylece yeni bir standart oluşturmadan var olan standartları tek bir çatı
-altında topladığından, yeni bir döküman okumanıza gerek kalmadan `merge`'i
-kullanabilirsiniz.
+Bu yöntem sayesinde az önce belirtilen sorunların tamamı çözülebilmektedir.
+
+farklı sistemlerde aynı komutu anlamlandırabilmektedir.
+`merge` kullanarak  aynı komutları kullanarak sistemle iletişim kurabilirsiniz.
 
 > ANAHTAR KELIMELER: paket yöneticisi, işletim sistemi, standartlaştırma, çapraz
 > platform, soyutlama
 
 ## Kaynaklar
 
-- Punch Cards: https://en.wikipedia.org/wiki/Punched_card_input/output
-
-<!--
-GPacR kayıt sisteminin yeni geliştirilen paketlere adapte olmasını kolaylaştırmak ve paket kayıt sistemini
-güncellemek için bir otomasyon sistemi geliştirdik. Bu sistem, paketleri agresif bir elemeden geçiren yüksek
-performanslı
-bir algoritma kullanır. Bu algoritma sayesinde belirli aralıklarla güncellenen GPacR etkin ve tasarruflu bir biçimde
-güncel tutulmuş olur.
-
-Paket kayıt sistemi otomasyonu, bulut temelli CI/CD/CT (Continious Integration, Continious Delivery, Continious Testing)
-entegrasyonlarıyla
-son teknoloji program geliştirme standartları ve bakım protokollerini destekler nitelikte tasarlanmıştır.
--->
+- Punch Cards: <https://en.wikipedia.org/wiki/Punched_card_input/output>
