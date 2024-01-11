@@ -3,67 +3,34 @@
 > Araştırma yönteminin, veri toplama araçlarının, deney ve gözlem düzeneklerinin
 > ve verilerin analiz yönteminin verildiği bölümdür.
 
-# Kullanılan Araçlar
+Projemizi geliştirirken kullandığımız araçları yazılımcılar arasında rabet
+gören araçlardan seçmeye özen gösterdik.
 
-`merge` emülatörünü geliştirirken Rust yazılım dilini kullandık.
-Rust'ı tercih etmemizin arkasındaki sebepler aşağıda listelenmiştir.
+Öncelikli olarak projemizi deyimsel Rust ile 4 farklı editör kullanarak gelişitirdik.
+
+Yazılım dili olarak Rust'ı seçmemizin sebepleri aşağıda listelenmiştir:
 
 ## Cargo Paket Yöneticisi
 
-Günümüz programlama dil paket yöneticilerinin modern standartlarına uygun bir
-paket yöneticisi olan rust programlama dilinin `cargo` paket yöneticisi, `merge`
-ekosisteminin geliştirilmesinde büyük rol oynamıştır.
-
-`cargo`'yu seçmemizin temel nedeni modern program geliştirme araçları ile kolay
-kullanılabilir bir yapılandırma sistemi ile gelmesiydi.
-
-Rust'ın standart paket yöneticisi olan Cargo, `merge`'nin geliştirme, bakım,
-sürdürülebilirlik ve dağıtım süreçlerde büyük kolaylık sağlamıştır. Başlıca
-sistem programlama dilleri arasında sık karşılaşılan standart olmayan paket
-yöneticilerine [C/C++ vcpkg canon] karşın Rust'ın standart olarak belirlediği
-Cargo, diğer sistem programlama dilleri ile karşılaştırıldığında daha kolay
-kullanılabilir bir yapılandırma sistemine sahiptir.
-
-Proje geliştirme sürecinde cargo'nun kullandığı semantik versiyonlama (semver),
-yanking gibi sistemlerin sağladığı sürdürülebilirlik (maintenance) kolaylığı ile
-birlikte yerel derleme (local compilation) ile otomatik özellik yönetimi
-(feature management), plugin yönetimi (plugin management) gibi özellikler, `merge`
-projesini geliştirmeyi kolaylaştırmıştır.
-
-## Yüksek Seviye Sözdizimi
-
-Rust, C ve C++ gibi düşük seviye programlama dillerinin aksine yüksek seviye bir
-sözdizimine sahiptir. Bu sayede programcılar, düşük seviye programlama
-dillerinde karşılaştıkları okunabilirik, yeniden düzenleme (refactoring) gibi
-konularda sıkıntılar yaşamazlar.
+Bakım, test, bağımlılık yönetimi, dökümantasyon üretimi ve paylaşımını
+kolaylaştırmak için Rust'ın standart paket yöneticisi olan `cargo`'yu kullandık.
 
 ## Ödünç Alma Denetleyicisi (Borrow Checker)
 
-Rust sahiplik (ownership) ve ödünç alma (borrowing) kavramları sayesinde bütün
-bellek yönetimini derleme zamanında (compile-time) yapar. Bu sayede
-programcılar, bellek yönetimi ile uğraşmak zorunda kalmazken aynı zamanda
-işleyiş anındaki bellek hatalarının çoğunun önüne geçilmiş olur.
-[bkz. reference cycles (referans döngüleri)](https://doc.rust-lang.org/book/ch15-06-reference-cycles.html)
-
-Rust programlama dilinin en önemli özelliklerinden biri de manuel bellek
-yönetimi olmamasıdır. Rust, yazdığınız programı derlerken, programınızın bellek
-yönetimini otomatik olarak yapar. Bu sayede programcılar, bellek yönetimi ile
-uğraşmak zorunda kalmazlar. Bunun için yenilikçi bir yöntem olan
-`borrow checker` sistemini kullanır. Bu sistem, programcıların yazdığı programın
-risk oluşturmayacak biçimde olmasını zorunlu kılar. Bu kurallara uymayan
-programlar derlenmez. Böylece tamamen soyutlanmış (abstracted) hızlı ve güvenli
-programlar yazılabilir.
+Rust, sahiplik (ownership) ve ödünç alma (borrowing) kavramları sayesinde bütün
+bellek yönetimini derleme zamanında yapar. Böylece programcılar, bellek yönetimi
+ile uğraşmak zorunda kalmayıp, işleyiş anındaki bellek hatalarının büyük bir 
+kısmının geçilmiş olur.
 
 ## Sistem Seviyesinde Performans
 
-Rust, LLVM Derleyici altyapısını temel alan bir programlama dilidir. Bu sayede
-sistem seviyesinde performans sağlar.
+Rust, LLVM Derleyici altyapısını temel alan bir programlama dilidir. Bu nedenle
+rakip dillerle karşılaştırıldığında yüksek performanslar sergilemektedir.
 
 ## Yeni Nesil Programlama
 
-Rust yarı fonksiyonel bir programlama dili olduğundan [bkz.
-data/figures/programming-languages-classification] fonksiyonel programlama
-dillerinin sahip olduğu kısa ve okunabilir kod yapısına sahiptir.
+Rust yarı fonksiyonel bir programlama dili olduğundan fonksiyonel programlama
+dillerinin sahip olduğu kısa ve okunabilir  kod yapısına sahiptir.
 
 Desteklediği güçlü makro sistemi projemizi geliştirirken kod tasarrufu yapmamızı
 sağlamıştır.
@@ -73,20 +40,13 @@ Desen eşleme, trait sistemi, Güçlü ve Cebirsel Veri Tipleri, fonksiyonel pro
 toplam türleri (sum types) kullanarak daha temiz ve deyimsel (idiomatic) kod
 yazılmasını sağladığından projemizi geliştirirken bize kolaylık sağlamıştır.
 
-`rustc` çapraz derleme özelliği ile yazdığımız
-yazdığımız programlar bütün işletim sistemlerinde
-çalışabilir durumdadır.
+`rustc` çapraz derleme özelliği ile yazdığımız yazdığımız programlar 
+bütün işletim sistemlerinde çalışabilir durumdadır.
 
 ## Eskiye Uyumlu (Backward Compatiblity)
 
-Rust programlama dili büyük ve genişleyen kominitesi ile genel programlama
-dillerinin karşılaştığı bir problemle karşı karşıya kalmıştır. Örneğin Python2
-ve Python3 arasındaki temel değişiklikler bile programlama forumları,
-kütüphaneler gibi pek çok açıdan büyük ses getirmiştir. Rust bu sorunun
-güvencesini resmi anlamda sunarak rust programlarının eski derleyiciler ile
-kullanılabileceğini kesinleştirmiştir.
-
-Bu sayede `merge`, eski veya yeni versiyon rust derleyicilerini deskteklemektedir.
+Rust 2.0 planlanmadığından dolayı projemiz gelecekte çıkacak derleyicilerle de
+kullanılabilecektir.
 
 # Genel Geliştirici Araçları
 
@@ -130,6 +90,13 @@ Linux kullanıcılarının sık kullandığı sistem kabuğu (system shell) term
 içerisinde ise kendi neovim dağıtımım olan `vimacs`'i ve helix metin editörünü kullandım.
 [https://github.com/utfeight/vimacs]
 
+## İşletim Sistemi Ayrıntıları
+
+Yazılımın büyük bir kısmı NixOS işletim sistemi ile dwm X pencere yönetcisi
+kullanan bir ekosistemde geliştirilmiştir.
+
+Dökümanların bir kısmı Windows üzerinde yazılmıştır.
+
 Konfigurasyon dosyaları için bkz. Ek 2:
 
 - NixOS işletim sistemi: https://github.com/utfeight/dotnix
@@ -147,13 +114,11 @@ Konfigurasyon dosyaları için bkz. Ek 2:
 # Merge Algoritmaları
 
 Merge, geliştirilmeye açık olarak tasarlanmak istenildiğinden temel programlama
-prensiplerine uygun olarak temiz bir kod tabanı üzerine geliştirilmiştir.
-Bunun için Endişelerin ayrılması ile doğru miktarda uyum ve
-bağlantı gibi pek çok programlama prensibi göz önünde bulundurularak
-tasarlanmıştır.
+prensiplerine uygun olarak temiz bir kod tabanı üzerine geliştirilmiştir. Bunun
+için Endişelerin ayrılması ile doğru miktarda uyum ve bağlantı gibi pek çok
+programlama prensibi göz önünde bulundurularak tasarlanmıştır.
 
-Geliştirilmesi için bir çok rust kütüphanesinden yararlanılmıştır. (bkz.
-Cargo.toml's : TODO)
+Bağımlı olduğumuz için kütüphaneler için: [Ek III](https://github.com/denizbaba0/merge/blob/master/merge/Cargo.toml)
 
 ## MgTWIN
 
@@ -179,7 +144,7 @@ yukarıda verilmiş olan bütün komutlar bütün sistemlerde çalışacaktır �
 bu komut sistemlerinin hepsini anlamlandırıp kullandığınız işletim sisteminin
 komutlarına çevirebilmektedir.
 
-Böylece büütn kullanıcılar, hangi paket yöneticisini kullanmak istediklerini tercih edebilirler.
+Böylece bütün kullanıcılar, hangi paket yöneticisini kullanmak istediklerini tercih edebilirler.
 
 ## MgMIR
 
@@ -195,7 +160,7 @@ geliştirmiştir.
 ### Minimal konfigürasyon hacimleri
 
 LLVM derleyici altyapı sistemi ve JVM Byte Code gibi tasarım şekillerinden
-esinlenerek `merge`, konfigürasyonu minimumda tutmak adına kendi MIR'ini
+esinlenerek `merge`, konfigürasyonu minimumda tutmak adına kendi MIR'imizi
 geliştirdik. MgMIR adını verdiğimiz bu basit MIR, son kullanıcının `merge`'e
 eklemeler yapmasını kolaylaştırmaktadır.
 
