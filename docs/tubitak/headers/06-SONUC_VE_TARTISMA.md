@@ -2,17 +2,13 @@
 
 > Bu bölümde proje çalışması ile elde edilen bulgular araştırma sorusuna veya problemine uygun olarak yorumlanır.
 
-> Araştırma Sorusu: Sistemler arası paket yöneticilerini tek bir paket yöneticisine indirmek mümkün müdür?
+İnternet üzerinden projemiz üzerine tartıştığımızda faydalı olduğu kanısına varılmıştır.
 
-GENE Ekosistemi paket yöneticilerini tek boyuta indirmek için gerekli olan araçları kullanıcılara sunmaktadır.
+Özellikle linux kullanmaya yeni başlayan kişiler sıklıkla sistem değiştirmekte oldukları için
+öğrendikleri komutları tekrar başka sistemler için öğrenmeleri gerekmektedir.
 
-Paket kayıt sistmelerini GPacR ile tek boyutta indirilmiştir.
+Bulut üzerinde veya sanal makineler ile çalışan yazılımcılar, ana makinelerinden farklı işletim sistemlerini kullanmak zorunda olduğu için
+ana bilgisayarlarındaki komutları diğer sistemlerde kullanamazlar.
 
-GTranslate modülüyle paket yöneticileri komutları arasında yeni bir standart icat etmeden paket komutlarını,
-paket yönetisinden bağımsız hale getirmiştir.
-
-## GENE Ne kadar işlevli?
-
-### Yüksek paket eşleştirme oranı
-
-## GPacR özgün mü?
+Bu gibi adaptasyon sorunlarını çözmekte olan `merge` hem kolay konfigüre edilebilen hem de geniş kullanıcı kitlesine hitap eden bir proje olduğundan
+sektördeki yazılımcıların hoş karşılayacağı bir projedir.
