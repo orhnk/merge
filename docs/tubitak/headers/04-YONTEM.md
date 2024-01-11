@@ -3,32 +3,21 @@
 > Araştırma yönteminin, veri toplama araçlarının, deney ve gözlem düzeneklerinin
 > ve verilerin analiz yönteminin verildiği bölümdür.
 
+`merge` emülatörünü etkili bir şekilde geliştirmek için kullandığımız araçlar
+aşağıda listelenmiştir:
+
 # Kullanılan Araçlar
 
-`merge` emülatörünü geliştirmek için kullanılan temel yazılım dili Rust'tır.
-Rust'ı tercih etmemizin arkasındaki sebepler aşağıda listelenmiştir.
+Projemizi geliştirmek amacıyla Rust programlama dili'ni seçmemizin
+nedenleri aşağıda açıklanmıştır.
 
 ## Cargo Paket Yöneticisi
 
-Günümüz programlama dil paket yöneticilerinin modern standartlarına uygun bir
-paket yöneticisi olan rust programlama dilinin `cargo` paket yöneticisi, `merge`
-ekosisteminin geliştirilmesinde büyük rol oynamıştır.
+Günümüz programlama dil paket yöneticilerinin modern standartlarına uygun şekilde
+yöneten `cargo`, `merge` ekosisteminin geliştirilmesinde büyük rol oynamıştır.
 
-`cargo`'yu seçmemizin temel nedeni modern program geliştirme araçları ile kolay
-kullanılabilir bir yapılandırma sistemi ile gelmesiydi.
-
-Rust'ın standart paket yöneticisi olan Cargo, `merge`'nin geliştirme, bakım,
-sürdürülebilirlik ve dağıtım süreçlerde büyük kolaylık sağlamıştır. Başlıca
-sistem programlama dilleri arasında sık karşılaşılan standart olmayan paket
-yöneticilerine [C/C++ vcpkg canon] karşın Rust'ın standart olarak belirlediği
-Cargo, diğer sistem programlama dilleri ile karşılaştırıldığında daha kolay
-kullanılabilir bir yapılandırma sistemine sahiptir.
-
-Proje geliştirme sürecinde cargo'nun kullandığı semantik versiyonlama (semver),
-yanking gibi sistemlerin sağladığı sürdürülebilirlik (maintenance) kolaylığı ile
-birlikte yerel derleme (local compilation) ile otomatik özellik yönetimi
-(feature management), plugin yönetimi (plugin management) gibi özellikler, `merge`
-projesini geliştirmeyi kolaylaştırmıştır.
+`cargo` sayesinde projemizi derlemek, test etmek, yayımlamak gibi eylemler
+daha verimli hale getirilmiştir
 
 ## Yüksek Seviye Sözdizimi
 
@@ -39,55 +28,34 @@ konularda sıkıntılar yaşamazlar.
 
 ## Ödünç Alma Denetleyicisi (Borrow Checker)
 
-Rust sahiplik (ownership) ve ödünç alma (borrowing) kavramları sayesinde bütün
-bellek yönetimini derleme zamanında (compile-time) yapar. Bu sayede
-programcılar, bellek yönetimi ile uğraşmak zorunda kalmazken aynı zamanda
-işleyiş anındaki bellek hatalarının çoğunun önüne geçilmiş olur.
-[bkz. reference cycles (referans döngüleri)](https://doc.rust-lang.org/book/ch15-06-reference-cycles.html)
-
-Rust programlama dilinin en önemli özelliklerinden biri de manuel bellek
-yönetimi olmamasıdır. Rust, yazdığınız programı derlerken, programınızın bellek
-yönetimini otomatik olarak yapar. Bu sayede programcılar, bellek yönetimi ile
-uğraşmak zorunda kalmazlar. Bunun için yenilikçi bir yöntem olan
-`borrow checker` sistemini kullanır. Bu sistem, programcıların yazdığı programın
-risk oluşturmayacak biçimde olmasını zorunlu kılar. Bu kurallara uymayan
-programlar derlenmez. Böylece tamamen soyutlanmış (abstracted) hızlı ve güvenli
-programlar yazılabilir.
+Rust sahiplik (ownership) ve ödünç alma (borrowing) kavramları ile bütün
+bellek yönetimini derleme zamanında yapar. Böylece
+programcılar, bellek yönetimi ile uğraşmak zorunda kalmayıp
+işleyiş anındaki bellek hatalarının çoğunun önüne geçmiş olur.
 
 ## Sistem Seviyesinde Performans
 
-Rust, LLVM Derleyici altyapısını temel alan bir programlama dilidir. Bu sayede
-sistem seviyesinde performans sağlar.
+Rust, LLVM Derleyici altyapısını temel alan bir programlama dilidir. Bu yüzden
+yüksek seviyesinde performans sağlar.
 
 ## Yeni Nesil Programlama
 
-Rust yarı fonksiyonel bir programlama dili olduğundan [bkz.
-data/figures/programming-languages-classification] fonksiyonel programlama
+Rust yarı fonksiyonel bir programlama dili olduğundan dolayı fonksiyonel programlama
 dillerinin sahip olduğu kısa ve okunabilir kod yapısına sahiptir.
 
 Desteklediği güçlü makro sistemi projemizi geliştirirken kod tasarrufu yapmamızı
 sağlamıştır.
 
-Desen eşleme (pattern matching), Trait sistemi, Güçlü (Strongly-typed) ve
-Cebirsel Veri Tipleri (Algebraic Data Types), fonksiyonel programlama dillerinde
-öne çıkan ve programın geliştirilmesinde çarpım türleri (product types) yerine
-toplam türleri (sum types) kullanarak daha temiz ve deyimsel (idiomatic) kod
-yazılmasını sağlayan bir programlama paradigmasıdır.
+Desen eşleme, trait sistemi, güçlü ve cebirsel veri tipleri, fonksiyonel programlama dillerinde
+öne çıkan özellikler sayesinde temiz ve deyimsel (idiomatic) bir kod tabanı elde edilmiştir.
 
-Rust derleyicisi (rustc) Çapraz derleme (cross-compilation) sayesinde yazdığımız
-programı farklı işletim sistemleri için derleyebilmesi, kullanım kolaylığı
-sağlamıştır.
+`rustc` ile birliklte çapraz derleyebildiğimiz `merge`,
+bütün modern işletim sistemlerinde çalışabilmektedir.
 
 ## Eskiye Uyumlu (Backward Compatiblity)
 
-Rust programlama dili büyük ve genişleyen kominitesi ile genel programlama
-dillerinin karşılaştığı bir problemle karşı karşıya kalmıştır. Örneğin Python2
-ve Python3 arasındaki temel değişiklikler bile programlama forumları,
-kütüphaneler gibi pek çok açıdan büyük ses getirmiştir. Rust bu sorunun
-güvencesini resmi anlamda sunarak rust programlarının eski derleyiciler ile
-kullanılabileceğini kesinleştirmiştir.
-
-Bu sayede `merge`, eski veya yeni versiyon rust derleyicilerini deskteklemektedir.
+Rust eskiye uyumluluk ile `merge` kaynak kodunu ileri safhalardaki derleyiciler de
+çalıştırabilecek ve böylece projemiz daha güvenli şekilde geliştirilebilecektir.
 
 # Genel Geliştirici Araçları
 
@@ -102,20 +70,19 @@ endüstriyel standartlardan birisi olan Git Versiyon Kontrol sistemini kullandı
 
 Sıkıntı takipçisi (issue tracker), kod incelemesi (code review), özellik
 istekleri (feature request), wiki gibi geniş çaplı projeler için gerekli olan
-yapıları oluşturacak ve Git ile entegre çalışacak bir barındırma servisi (host)
+yapıları oluşturacak ve Git ile entegre çalışacak bir barındırma servisi
 olarak GitHub platformunu kullandık.
 
-Bu sayede `merge`'yi geliştirmek ve kullanıcıların karşılaştıkları problemleri
-çözmek kolaylaşmıştır.
+Bu sayede `merge`'i geliştirmek ve kullanıcıların karşılaştıkları problemleri
+daha hızlı çözmeyi hedefledik.
 
 ## JetBrains IDE, VSCode, Helix ve Vimacs
 
 `merge`, IDE ve editör sektöründe profesyonel yazılımcıların önerdiği JetBrains
-temelli RustRover, CLion IDE'leri, Neovim kod editörü, Rust ile yazılmış Helix
-terminal editörü ve Microsoft tarafından geliştirilen VSCode uygulaması
+temelli RustRover, CLion ve VSCode IDE'leri; Vimacs[1] ve Helix terminal editörleri
 kullanılarak geliştirilmiştir.
 
-Büyük bir kod tabanı (code base) ile çalışırken, kodun okunabilirliği ve yeniden
+Büyük bir kod tabanı ile çalışırken, kodun okunabilirliği ve yeniden
 düzenlenebilirliği (refactoring) gibi konulara dikkat etmek gerekir. Bu sebeple
 JetBrains IDE'lerini her yerde kullanmamızı sağlayan bulut temelli auto-sync,
 ileri düzeyde etkili araç entegrasyonları (Git, GitHub, DB, JetBrains AI, Github
@@ -126,23 +93,24 @@ için kullandık.
 4 farklı editörü aynı proje için kullanmamızın sebebi her bir editörün kendine
 özgü güçlü yanları olmasıdır.
 
-Ana geliştirici makinesi Linux NixOS dağıtımı çalıştırdığından JetBrains
-IDE'leri kusurlu çalışmaktadır. [Read-Only File System & absolute paths for
-dependencies etc.] Bu nedenle bazı zamanlar VSCode kod editörü kullandık.
+İşletim sistemi olarak Windows ve NixOS,
+Linux sistem kabuğu olarak `nushell`, `bash` ve `fish`,
+Sistem paket yöneticisi olarak `nix`,
+Scriptler için `sh`,
+Klavye konfigürasyon modu olarak `vim`,
+Web temelli editor olarak replit ve rust-playground
 
-Linux kullanıcılarının sık kullandığı sistem kabuğu (system shell) terminalleri
-içerisinde geçirdiğim zamanlar kendi neovim dağıtımım olan `vimacs`'i kullandım
-[https://github.com/utfeight/vimacs]
+kullandık.
 
 Konfigurasyon dosyaları için bkz. Ek 2:
 
-- NixOS işletim sistemi: https://github.com/utfeight/dotnix
+- NixOS işletim sistemi: <https://github.com/utfeight/dotnix>
 - Vimacs:
   - Geliştirdiğim vimacs yazılımının kaynak kodu:
-    https://github.com/utfeight/vimacs
-  - Vimacs konfigurasyon dosyaları: https://github.com/utfeight/vimax
+    <https://github.com/utfeight/vimacs>
+  - Vimacs konfigurasyon dosyaları: <https://github.com/utfeight/vimax>
 - JetBrains:
-  - ideavimrc: https://github.com/utfeight/dotideavimrc
+  - ideavimrc: <https://github.com/utfeight/dotideavimrc>
   - TODO: link dotnix ft
 - VSCode:
   - Nix ile yazılmış dekleratif konfigürasyon: TODO: link dotnix ft
@@ -179,7 +147,7 @@ merge nix shell dwm
 ...
 ```
 
-yukarıda verilmiş olan bütün komutlar bütün sistemlerde çalışacaktır çünkü `merge`,
+yukarıda verilen komutlar bütün sistemlerde çalışacaktır çünkü `merge`
 bu komut sistemlerinin hepsini anlamlandırıp kullandığınız işletim sisteminin
 komutlarına çevirebilecektir.
 
@@ -188,9 +156,9 @@ komutlarına çevirebilecektir.
 `merge`'in en inovatif yönlerinden birisi olan `MgMIR` kendisine benzeyen
 sistemlerden ayrıldığı noktalardan birisidir. `merge`'in ileriye dönük
 geliştirilmesi kolay olması adına konfigürasyon dosyalarını minimum hacimde
-tutmaya çalıştık.
+tutulmaya yönelik bir ara dil geliştirilmiştir.
 
-Veritabanı kullanımı açısından `merge` emülatörü, `mew` projesini andırmaktadır.
+Veritabanı kullanımı açısından `merge` emülatörü, `mew` projesine benzemektedir.
 `merge`, aşağıda belirtildiği üzere `mew`'in eksik yanlarından ders alıp onları
 geliştirmiştir.
 
@@ -200,6 +168,29 @@ LLVM derleyici altyapı sistemi ve JVM Byte Code gibi tasarım şekillerinden
 esinlenerek `merge`, konfigürasyonu minimumda tutmak adına kendi MIR'ini
 geliştirdik. MgMIR adını verdiğimiz bu basit MIR, son kullanıcının `merge`'e
 eklemeler yapmasını kolaylaştırmaktadır.
+
+### Geniş Sistem Desteği
+
+Mew yalnızca `pacman` ve `rpm` ile debian temelli paket yöneticilerine çevirim
+yapabildiği için yeterli sayıda kullanıcıya hitap etmemektedir.
+
+`merge` ise aşağıda listelenen bütün paket yöneticilerini desteklemektedir.
+
+1. apk
+2. apt
+3. homebrew
+4. choco
+5. dnf
+6. emerge
+7. nix
+8. pacman
+9. scoop
+10. yum
+11. zypper
+
+Bütün durumları aynanda anlamlandırabilen `merge` toplamda 121 farklı kombinasyon ile çalışabilir.
+
+Yeni konfigürasyonlar eklemenin de kolay olduğu `merge`'in çalıştırabildiği komutların günden güne artması beklenmektedir.
 
 ## MgPMS (Merge Package Manager Search)
 
@@ -229,5 +220,5 @@ terimleri `MgMIR` kullanarak tanımlayabilirsiniz.
 
 # Ekler
 
-GitHub: https://en.wikipedia.org/wiki/GitHub Rust as a functional lang:
-https://kerkour.com/rust-functional-programming
+GitHub: <https://en.wikipedia.org/wiki/GitHub> Rust as a functional lang:
+<https://kerkour.com/rust-functional-programming>
