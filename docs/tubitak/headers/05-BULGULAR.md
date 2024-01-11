@@ -2,23 +2,27 @@
 
 > Çalışmada toplanan veriler ve verilere ait analiz sonuçları verilir.
 
-## Yüksek Veri Sorgulaması
+Projemizin çalışır haldeki asciinema klibini izlemek için: <https://asciinema.org/a/630971>
 
-GPacR'ın temel algoritmasını test ederken kullandığımız Arch User Repository paket arşivini,
-tasarruflu yazılmış paralel çalışan bir algoritma ile sorgulamaya başladığımız zaman API 
-sınırına (rate limit) ulaştığımızdan AUR tarafından yasaklandık.
+## Büyük O notasyonu
 
-Bu bir sonuç aldığımız GPacR modulünün hızını bilinçli olarak düşürerek günlük 4000 sorguya indirdik.
-[https://wiki.archlinux.org/title/Aurweb_RPC_interface#:~:text=Searches%20will%20fail%20if%20they,requests%20per%20day%20per%20IP.]
+`merge`, Performans açısından muadillerine karşı üstünlük elde etmiştir.
 
-## Paket isimleri bulunma yüzdesi
+Öyle ki `mew` paket çevirmeni, büyük O notasyonu hacim uzay karmaşıklığı (Space Complexity) `O(n)` iken
+spesifik olarak hacimsel optimizasyon ile `MgMIR` aynı işlemi düz uzay (optimum karmaşa) olan `O(1)`
+ile gerçekleştirebilmektedir.
 
-- Grafik ve Tablolama
+## Kaynak Kodu
 
-## GPacR Kayıt Sistemini Otomatik Güncelleme
+`merge`, tamamen ücretsiz ve açık kaynak bir yazılımdır.
+Kaynak kodu için [Ek2'ye](https://github.com/orhnk/merge) bakınız.
 
-- Performans kayıtları
+## Loglar
 
-## Standardalizasyon Konusunda ortaya çıkan bazı sorunlar
+`merge` çalışırken oluşabilecek sıkıntılar için yapılan işlemi anlık olarak kullanıcıya bildirmektedir.
 
-Aynı yazılım paketi, bütün işletim sistemlerinde aynı olmak zorunda değil.
+Aşağıda Rust'ın standart kütüphanesinden `dbg!()` makrosunun çıktıları verilmiştir:
+
+![gorsel_yuklenemedi](image.png)
+
+Fotoğrafta verildiği üzere oluşturulan son komut kullanıcıya `INFERRED CMD: <komut>` şeklinde bildirilmektedir.
