@@ -6,9 +6,7 @@
 > kişilere sunulacağı dikkate alınarak değerlendirmeye hiçbir katkı sağlamayacak genel konu ve tarihçe anlatımlarından
 > kaçınılmalıdır.
 
-İşletim sisteminizdeki paket yöneticisi komutlarını başka sistemlerde kullanamazsınız çünkü paket yöneticileri arasında
-standart bir komut yapısı yoktur. Bu eksikliği gidermek ve herhangi bir komutu bütün sistemlerde çalışır hâle getirmek için
-`merge` paket yöneticisi emülatörünü geliştirdim.
+Bir yazılımı indirirken yaptığınız eylemler sistemden sisteme değişiklik gösterir.
 
 Figür I'deki tabloda popüler paket yöneticilerinin basit eylemler için kullandıkları komutlar arasındaki farklılıklara örnekler verilmiştir.
 
@@ -30,11 +28,13 @@ Figür I'deki tabloda popüler paket yöneticilerinin basit eylemler için kulla
 | `RPM`            | `rpm -i <paket>`         | `rpm -U <paket>`           | `rpm -qf <paket>`         | `rpm -e <paket>`           |
 | `Portage`        | `emerge <paket>`         | `emerge --update <paket>`  | `emerge --search <paket>` | `emerge --unmerge <paket>` | [//]: # (Validate)
 
-Figür I'de ufak bir kısmı verilen paket yönetici komutları sistemden sisteme göre farklılık göstermektedir.
-Bu farklılıklar bir yazılımın kurulumunu yaparken ya da sanal makine ya da işletim sistemi değiştirirken sorun çıkartmaktadır.
+Bu uyuşmazlıklar, özellikle birden fazla bilgisayarı aynı anda kullanan programcılar için kafa karışıklığına sebep olmaktadır.
 
-Örneğin kullanıcı bir programın gerektirdiği kütüphaneleri kurmak için komut satırına gireceği kodlar, kuracağı programın dökümanlarında yer almayabilir.
-Bu durumda kullanıcının kullandığı paket yöneticisinin dökümanlarını araştırması gibi zaman alıcı durumlar ile karşılaşabilir.
+Yazılımcıların farklı serverlar ile SSH gibi protokoller aracılığı ile pek çok farklı işletim sistemi arasında geçiş yaptığı düşünülünce
+komutların standartlaşmasının önemi daha da netleşmektedir.
+
+`merge`'in hedef kitlesi; sanal makine, bulut, sunucular, uzaktan kontrollü bilgisayarlar, docker, CI/CD/CT gibi
+farklı sistemlerin kullanımını zorunlu tutan şahıslardan oluşmaktadır.
 
 `merge`, sistemler arasındaki komutları tek bir çatı altında toplayarak bu farklılıkları ortadan kaldırmayı amaçlamaktadır.
 
