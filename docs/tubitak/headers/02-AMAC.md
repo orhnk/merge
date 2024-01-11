@@ -30,7 +30,7 @@ Figür I'deki tabloda popüler paket yöneticilerinin basit eylemler için kulla
 
 Bu uyuşmazlıklar, özellikle birden fazla bilgisayarı aynı anda kullanan programcılar için kafa karışıklığına sebep olmaktadır.
 
-Yazılımcıların farklı serverlar ile SSH gibi protokoller aracılığı ile pek çok farklı işletim sistemi arasında geçiş yaptığı düşünülünce
+Yazılımcıların farklı serverlarda SSH gibi protokoller aracılığı ile pek çok farklı işletim sistemi arasında geçiş yaptığı düşünülünce
 komutların standartlaşmasının önemi daha da netleşmektedir.
 
 `merge`'in hedef kitlesi; sanal makine, bulut, sunucular, uzaktan kontrollü bilgisayarlar, docker, CI/CD/CT gibi
