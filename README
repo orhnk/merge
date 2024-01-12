@@ -4,7 +4,7 @@ Merge Package Manager Emulator
 * What is package manager emulation?
   With merge, you can simulate any package manager on your system.
 
-  Even the underlying software doesn't supprot what you're doing.
+  Even the underlying software doesn't support what you're doing.
 
 * Examples
   Let's assume you're running windows (sadly) and want to use the pacman package manager.
@@ -25,8 +25,8 @@ Merge Package Manager Emulator
   but the commands are different.
 
   e.g:
-  
-    (permissions are ommitted)
+
+    (permissions are omitted)
       pacman -S vim
       apt install vim
       apt-get install vim
@@ -46,11 +46,11 @@ Merge Package Manager Emulator
 
     Here is the solution I've (tried to) come up with:
 
-      merge knows everyhing about a wide range of package managers (including your favorite)
+      merge knows everything about a wide range of package managers (including your favorite)
       and understands every possible representation[1] given to it.
 
       It gives the options for all the package manager managers for you to choose.
-  
+
   Project `merge` aims to help these people by standardizing the process of software management (especially package managers)
 
   
