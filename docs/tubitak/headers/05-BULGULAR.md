@@ -8,7 +8,7 @@ Projemizin çalışır haldeki asciinema klibini izlemek için: <https://asciine
 
 `merge`, Performans açısından muadillerine karşı üstünlük elde etmiştir.
 
-Öyle ki `mew` paket çevirmeni, büyük O notasyonu hacim uzay karmaşıklığı (Space Complexity) `O(n)` iken
+Öyle ki `mew` paket çevirmeni, konfigürasyon dosyaları için büyük O notasyonu uzay karmaşıklığı (Space Complexity) `O(n)` iken
 spesifik olarak hacimsel optimizasyon ile `MgMIR` aynı işlemi düz uzay (optimum karmaşa) olan `O(1)`
 ile gerçekleştirebilmektedir.
 

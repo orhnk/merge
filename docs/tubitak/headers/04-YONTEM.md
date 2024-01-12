@@ -6,14 +6,11 @@
 `merge` emülatörünü etkili bir şekilde geliştirmek için kullandığımız araçlar
 aşağıda listelenmiştir:
 
-# Kullanılan Araçlar
-
-Projemizi geliştirmek amacıyla Rust programlama dili'ni seçmemizin
-nedenleri aşağıda açıklanmıştır.
+# Rust Programlama Dili
 
 ## Cargo Paket Yöneticisi
 
-Günümüz programlama dil paket yöneticilerinin modern standartlarına uygun şekilde
+Günümüz programlama dili paket yöneticilerinin modern standartlarına uygun şekilde
 yöneten `cargo`, `merge` ekosisteminin geliştirilmesinde büyük rol oynamıştır.
 
 `cargo` sayesinde projemizi derlemek, test etmek, yayımlamak gibi eylemler
@@ -21,7 +18,7 @@ daha verimli hale getirilmiştir
 
 ## Yüksek Seviye Sözdizimi
 
-Rust, C ve C++ gibi düşük seviye programlama dillerinin aksine yüksek seviye bir
+C ve C++ gibi düşük seviye programlama dillerinin aksine Rust, yüksek seviye bir
 sözdizimine sahiptir. Bu sayede programcılar, düşük seviye programlama
 dillerinde karşılaştıkları okunabilirik, yeniden düzenleme (refactoring) gibi
 konularda sıkıntılar yaşamazlar.
@@ -52,46 +49,44 @@ Desen eşleme, trait sistemi, güçlü ve cebirsel veri tipleri, fonksiyonel pro
 `rustc` ile birliklte çapraz derleyebildiğimiz `merge`,
 bütün modern işletim sistemlerinde çalışabilmektedir.
 
-## Eskiye Uyumlu (Backward Compatiblity)
+## Eskiye Uyumluluk (Backward Compatiblity)
 
-Rust eskiye uyumluluk ile `merge` kaynak kodunu ileri safhalardaki derleyiciler de
+Rust eskiye uyumlu olduğu için `merge` kaynak kodunu ileri safhalardaki derleyiciler de
 çalıştırabilecek ve böylece projemiz daha güvenli şekilde geliştirilebilecektir.
 
-# Genel Geliştirici Araçları
-
-## Git Versiyon Kontrol Sistemi
+# Git Versiyon Kontrol Sistemi
 
 Merge projesinin mekandan bağımsız ve eş zamanlı geliştirilebilmesi için bir
-organizasyon sistemine ihtiyaç duyduk. Projeyi geliştirirken, sürdürülebilirlik,
-geliştirme, test, dağıtım gibi pek çok aşamada işimizi kolaylaştırması adına
-endüstriyel standartlardan birisi olan Git Versiyon Kontrol sistemini kullandık.
+organizasyon sistemine ihtiyaç duyulmuştur. Proje geliştirilirken, sürdürülebilirlik,
+geliştirme, test, dağıtım gibi pek çok aşamada kolaylık sağlanması adına
+endüstriyel standartlardan birisi olan Git Versiyon Kontrol sistemini kullanıldı.
 
-## Github
+# Github
 
-Sıkıntı takipçisi (issue tracker), kod incelemesi (code review), özellik
-istekleri (feature request), wiki gibi geniş çaplı projeler için gerekli olan
+Sorun takipçisi (issue tracker), kod incelemesi (code review), özellik
+talebi (feature request), wiki gibi geniş çaplı projeler için gerekli olan
 yapıları oluşturacak ve Git ile entegre çalışacak bir barındırma servisi
-olarak GitHub platformunu kullandık.
+olarak GitHub platformunu kullanılmıştır.
 
-Bu sayede `merge`'i geliştirmek ve kullanıcıların karşılaştıkları problemleri
-daha hızlı çözmeyi hedefledik.
+Bu sayede `merge`'in geliştirilmesi ve kullanıcıların karşılaştıkları problemlerin
+daha hızlı çözülmesi hedeflenmiştir.
 
-## JetBrains IDE, VSCode, Helix ve Vimacs
+# JetBrains IDE, VSCode, Helix ve Vimacs
 
-`merge`, IDE ve editör sektöründe profesyonel yazılımcıların önerdiği JetBrains
+`merge`, IDE ve editör sektöründe profesyonel yazılımcılar tarafından önerilen JetBrains
 temelli RustRover, CLion ve VSCode IDE'leri; Vimacs[1] ve Helix terminal editörleri
 kullanılarak geliştirilmiştir.
 
 Büyük bir kod tabanı ile çalışırken, kodun okunabilirliği ve yeniden
-düzenlenebilirliği (refactoring) gibi konulara dikkat etmek gerekir. Bu sebeple
-JetBrains IDE'lerini her yerde kullanmamızı sağlayan bulut temelli auto-sync,
+düzenlenebilirliği (refactoring) gibi konulara dikkat etilmesi gerektiğinden
+kullanılan editörler, bulut kullanılarak senkorize edilmiş;
 ileri düzeyde etkili araç entegrasyonları (Git, GitHub, DB, JetBrains AI, Github
-Copilot vb.) güçlü grafiksel arayüz tasarımı (GUI), kod üretimi (codegen) ve
-düzenleme (refactoring) araçları ile konfigüre edip `merge` projesini geliştirmek
-için kullandık.
+Copilot vb.), güçlü grafiksel arayüz tasarımı, kod üretimi ve
+düzenleme araçları, konfigüre edilip `merge` projesini geliştirmek
+için kullanılımıştır.
 
-4 farklı editörü aynı proje için kullanmamızın sebebi her bir editörün kendine
-özgü güçlü yanları olmasıdır.
+4 farklı editörün aynı proje için kullanılmasının nedeni her bir editörün kendine
+özgü güçlü yanlarının bulunmasıdır.
 
 İşletim sistemi olarak Windows ve NixOS,
 Linux sistem kabuğu olarak `nushell`, `bash` ve `fish`,
@@ -100,7 +95,7 @@ Scriptler için `sh`,
 Klavye konfigürasyon modu olarak `vim`,
 Web temelli editor olarak replit ve rust-playground
 
-kullandık.
+kullanılmıştır.
 
 Konfigurasyon dosyaları için bkz. Ek 2:
 
@@ -120,8 +115,8 @@ Konfigurasyon dosyaları için bkz. Ek 2:
 
 Merge, geliştirilmeye açık olarak tasarlanmak istenildiğinden temel programlama
 prensiplerine uygun olarak temiz bir kod tabanı üzerine geliştirilmesi
-planlanmıştır. Bunun için Endişelerin ayrılması ile doğru miktarda uyum ve
-bağlantı gibi pek çok programlama prensibi göz önünde bulundurularak
+planlanmıştır. Bunun için endişelerin ayrılması (Seperation of Concerns) ile doğru miktarda uyum ve
+bağlantı (cohesion & coupling) gibi pek çok programlama prensibi göz önünde bulundurularak
 tasarlanmıştır.
 
 Geliştirilmesi için bir çok rust kütüphanesinden yararlanılmıştır. (bkz.
@@ -136,7 +131,7 @@ için geliştirilmiş olan çift yönlü tercüman modülüdür. Bu modül, Pake
 Yöneticilerinin eymleri için belirlediği komutları anlamlandırarak diğer paket
 yöneticilerinin komutlarına çevirmek için geliştirilmiştir.
 
-Örneğin DWM linux pencere yöneticisini indirmek isteyen bir kullanıcı aşağıdaki
+Örneğin dwm X pencere yöneticisini indirmek isteyen bir kullanıcı aşağıdaki
 komutlardan herhangi birini kullanabilir.
 
 ```shell
@@ -149,18 +144,18 @@ merge nix shell dwm
 
 yukarıda verilen komutlar bütün sistemlerde çalışacaktır çünkü `merge`
 bu komut sistemlerinin hepsini anlamlandırıp kullandığınız işletim sisteminin
-komutlarına çevirebilecektir.
+komutlarına çevirebilmektedir.
 
 ## MgMIR
 
-`merge`'in en inovatif yönlerinden birisi olan `MgMIR` kendisine benzeyen
-sistemlerden ayrıldığı noktalardan birisidir. `merge`'in ileriye dönük
-geliştirilmesi kolay olması adına konfigürasyon dosyalarını minimum hacimde
-tutulmaya yönelik bir ara dil geliştirilmiştir.
+`merge`'in inovatif konfigürasyon stili için kullanılan `MgMIR`,
+hacimsel olarak çok az yer kaplamasıyla kendisine benzeyen sistemlerden ayrılmaktadır. `merge`'in ileriye dönük
+geliştirilmesinin kolay olması adına konfigürasyon dosyalarını minimum hacimde
+tutulmaya yönelik bir ara dil üretilmiştir.
 
 Veritabanı kullanımı açısından `merge` emülatörü, `mew` projesine benzemektedir.
 `merge`, aşağıda belirtildiği üzere `mew`'in eksik yanlarından ders alıp onları
-geliştirmiştir.
+tamamlamıştır.
 
 ### Minimal konfigürasyon hacimleri
 

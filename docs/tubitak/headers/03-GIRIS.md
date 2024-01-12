@@ -15,7 +15,7 @@ Yapılan literatür araştırması sonucu `merge` ile benzerlik gösteren projel
 Pacapt, adından anlaşılacağı üzere bütün paket yöneticisi komutlarını `pacman` paket yöneticisine
 benzetmeye çalışmaktadır.
 
-POSIX SH ile yazılan Pacapt, daha önceden `pacman` kullanmamış olan yazılımcılara hitap
+POSIX `sh` ile yazılan Pacapt, daha önceden `pacman` kullanmamış olan yazılımcılara hitap
 etmemektedir.
 
 ## Mew

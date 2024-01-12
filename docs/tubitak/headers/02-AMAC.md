@@ -6,12 +6,16 @@
 > kişilere sunulacağı dikkate alınarak değerlendirmeye hiçbir katkı sağlamayacak genel konu ve tarihçe anlatımlarından
 > kaçınılmalıdır.
 
-Günümüz yazılım geliştiricilerinin ana makineleriyle aynı işletim sistemine sahip olmayan sunucu ve sanal makine gibi
-araçlar ile alışık olmadıkları komutlar kullanmaları gerekmektedir. Bu da iş akışını olumsuz etkilemekte ve
-sık sık referanslara göz atma ihtiyacı nedeniyle dikkatleri dağıtmaktadır.
+Günümüzde yazılım geliştiricileri ana makineleriyle aynı işletim sistemine sahip olmayan sunucu ve sanal makine gibi
+araçlar ile çalışmaktadırlar.
+Bu da birbirinden farklılık arz eden ve karmaşıklığa sebep olana çok sayıda komut kümesi kullanmalarını gerektirmektedir. Bu da
+sık sık referanslara göz atma ihtiyacı ile birlikte dikkati dağıtmakta ve iş akışını olumsuz etkilemektedir.
 
-Figür I'de en çok kullanılan paket yöneticileri komutlar beraber listelenmiştir.
+Figür1'de en bilinen paket yöneticileri için çok kullanılan komutlar listelenmiştir.
 Açıkça görüldüğü üzere komutlar arasında standart bir bağ bulunmamaktadır.
+
+Bu sistemleri aynı anda kullanmak durumunda kalan bir yazılımcı, her bir sistem için geçerli komutu birbirine karıştırmadan
+yazmak zorundadır. Sonuç olarak da kod yazarken sürekli `man` sayfalarına ve `--help` argümanlarına başvurmaktadır.
 
 > Figür I
 
@@ -31,14 +35,9 @@ Açıkça görüldüğü üzere komutlar arasında standart bir bağ bulunmamakt
 | `RPM`            | `rpm -i <paket>`         | `rpm -U <paket>`           | `rpm -qf <paket>`         | `rpm -e <paket>`           |
 | `Portage`        | `emerge <paket>`         | `emerge --update <paket>`  | `emerge --search <paket>` | `emerge --unmerge <paket>` | [//]: # (Validate) |
 
-Örneğin bir yazılımcı kullandığı bütün sanal makinelerde aynı komutları kullanamadığı için
-sıkça `man` sayfalarından ya da `--help` argumanlarından faydalanması gerekmektedir.
-
-Tekrar eden bu durum yazılımcıların istedikleri komutları kullanamamalarına neden olmaktadır.
-
 Karşılaşılan bu sorunu çözmek için bütün standartları anlamlandırabilecek şekilde geliştirdiğimiz
 `merge` paket yöneticisi emülatörü, sisteminize bağlı kalmadan çalışarak istediğiniz komutları
-çalıştırmanıza olanak sağlamaktadır.
+başka bir sistemde kullanmanıza olanak sağlamaktadır.
 
 ## Kaynaklar
 
