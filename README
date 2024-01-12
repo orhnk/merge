@@ -1,0 +1,56 @@
+Merge Package Manager Emulator
+==============================
+
+* What is package manager emulation?
+  With merge, you can simulate any package manager on your system.
+
+  Even the underlying software doesn't supprot what you're doing.
+
+* Examples
+  Let's assume you're running windows (sadly) and want to use the pacman package manager.
+  With merge, you'll be able to use `pacman -S package` instead of something like `scoop install`
+
+  This has a lot of benefits when you consider FOSS is liberal and many of the developing community
+  has different decisions as their operating system, package manager etc.
+
+  So depending on a document that doesn't support what you have as your software (e.g package manager)
+  would require at least a internet search.
+
+  Also a lot of people work with advanced cloud integrations, remote machines, servers etc.
+
+  And because for the sake of standardization of your software, people use technologies like
+  docker, CI/CD/CT services, Virtual Machines etc.
+
+  This can cause a lot of fuzz on your head because all the software you use are doing similar things
+  but the commands are different.
+
+  e.g:
+  
+    (permissions are ommitted)
+      pacman -S vim
+      apt install vim
+      apt-get install vim
+      nix shell vim        # this makes it a bit differently but who cares (you can opt `nix profile install` or even `nix-env`)
+      emerge -i vim
+      apk add vim
+      yum install vim
+      scoop install vim
+      choco install vim
+      brew install vim
+      port install vim
+
+    All the above scripts does the exact same thing: installing the only text editor in the universe.
+    but see how it differs on the package manager you're using. That is not possible to solve because
+    no one will stop using the package manager they use to make another package manager just to get
+    "more dominant". But we can at least "try".
+
+    Here is the solution I've (tried to) come up with:
+
+      merge knows everyhing about a wide range of package managers (including your favorite)
+      and understands every possible representation[1] given to it.
+
+      It gives the options for all the package manager managers for you to choose.
+  
+  Project `merge` aims to help these people by standardizing the process of software management (especially package managers)
+
+  
