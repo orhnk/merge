@@ -1,6 +1,10 @@
 Merge Package Manager Emulator
 ==============================
 
+> Disclaimer!
+> This project works, but currently the dictionary of command-ir representations are available only for simple actions,
+> if you want to help, you can help by filling the missing-complexer subcommandsq (check @/merge/db/*)
+
 * What is package manager emulation?
   With merge, you can simulate any package manager on your system.
 
@@ -46,9 +50,7 @@ Merge Package Manager Emulator
 
     Here is the solution I've (tried to) come up with:
 
-      merge knows everything about a wide range of package managers (including your favorite)
-      and understands every possible representation[1] given to it.
-
+      merging commands through a alias-system (simple ir <-> command) so that simple scripts, quick actions can work all-over, any command instead of any other (currently the supported ones in db)
       It gives the options for all the package manager managers for you to choose.
 
   Project `merge` aims to help these people by standardizing the process of software management (especially package managers)
